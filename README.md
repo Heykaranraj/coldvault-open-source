@@ -1,122 +1,69 @@
-🧊 ColdVault — Arduino-Based Ethereum Cold Wallet
+🧊 ColdVault — Arduino-Based Cold Wallet
 
-A lightweight, secure, hardware-assisted cold wallet using Arduino + Python + FastAPI + React (Vite).
+ColdVault is a secure, hardware-integrated Ethereum cold wallet that connects an Arduino to a web interface powered by Python scripts, FastAPI, and a Vite-based React frontend.
+Every function (Create Key, Get Wallet, Sign Hash, Broadcast Tx) runs through dedicated Python scripts executed on your machine and connected directly to your Arduino device.
 
-ColdVault is a secure, hardware-integrated cold wallet system that stores private keys inside an Arduino, while exposing wallet actions through a modern web interface.
-All wallet operations — Create Key, Get Wallet, Sign Hash, Broadcast Transaction — are executed through Python scripts, triggered from the UI and streamed live via WebSocket.
-
-This project is designed for education, experimentation, and air-gapped crypto key handling.
+🌐 Open-Source & Community Driven
+Our project is fully open-source.
+We encourage developers to:
+Audit the entire codebase
+Suggest UI improvements
+Enhance cryptographic security
+Submit pull requests
+Build additional blockchain integrations
 
 ⚙️ Features
-
-🔐 Hardware-level key security
-
-Keys are generated and stored on the Arduino.
-
-Private keys never leave the device.
-
-💻 Live Terminal Output
-
-Python scripts run from the website and stream output in real-time via WebSocket.
-
-⚡ FastAPI Backend
-
-Handles script execution + WebSocket communication.
-
-🌐 React (Vite) Frontend
-
-Clean custom UI (pure CSS — no Tailwind).
-
-Terminal emulator built using xterm.js.
-
-🪄 One-Click Crypto Actions
-
-Create Key
-
-Get Wallet
-
-Sign Hash
-
-Broadcast Transaction
-
-🔌 Simple & Modular Code Structure
-
-Easy to expand into multi-chain wallet in the future.
+🔐 Secure private-key generation and storage on Arduino
+💻 Run Python scripts directly from the web UI
+⚡ Live output via WebSocket (terminal-style streaming)
+🧩 FastAPI backend + React (Vite) frontend
+🎨 Beautiful UI (pure CSS — no Tailwind)
+🪄 One-click actions → each button triggers a backend Python script
 
 📁 Project Structure
 coldvault-web/
-│
 ├── backend/
-│   ├── app.py                 # FastAPI backend (WebSocket + script runner)
-│   ├── 1create_key.py         # Generates Ethereum private key + public address
-│   ├── 2get_wallet.py         # Shows wallet info + balance
-│   ├── 3test_sign_hash.py     # Signs hashes using Arduino-stored key
-│   ├── 4broadcast_tx.py       # Broadcasts signed transactions to network
-│   ├── wallet_info.json       # Stores generated wallet details
-│   └── .venv/                 # Python virtual environment
+│   ├── app.py                # FastAPI backend (WebSocket + script execution)
+│   ├── 1create_key.py        # Creates new Ethereum wallet
+│   ├── 2get_wallet.py        # Fetches wallet info
+│   ├── 3test_sign_hash.py    # Signs Ethereum hashes
+│   ├── 4broadcast_tx.py      # Broadcasts signed transactions
+│   └── .venv/                # Python virtual environment
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── App.jsx            # UI + 4 crypto control buttons
-│   │   ├── Terminal.jsx       # Live terminal component (WebSocket)
+│   │   ├── App.jsx           # UI with four action buttons + terminal
+│   │   ├── Terminal.jsx      # Live terminal output component
 │   │   └── main.jsx
 │   ├── index.html
-│   └── styles.css
 │
 └── README.md
 
-🧠 How the System Works
-🔌 Execution Flow
+🧠 How It Works
 
-When you click any of the 4 buttons:
+Each button in the UI runs a corresponding Python script on the backend:
+UI Button	Python Script	Function
+🟢 Create Key	1create_key.py	Generates new Ethereum keypair
+🔵 Get Wallet	2get_wallet.py	Fetches wallet address & data
+🟣 Sign Hash	3test_sign_hash.py	Signs transaction hash using Arduino
+🟠 Broadcast Tx	4broadcast_tx.py	Pushes signed transaction to network
+Execution Flow
 
-Frontend sends command → FastAPI WebSocket
+User clicks a button
+Frontend sends script command via WebSocket
+FastAPI backend starts the Python subprocess
+Script communicates with Arduino
+Output is streamed live to the web terminal
 
-FastAPI runs Python script → using a subprocess
-
-Python communicates with Arduino → over serial USB
-
-Arduino performs crypto operations → keygen / sign
-
-Backend streams output → line-by-line to browser
-
-Terminal on website displays it live
-
-Actions Mapped to Scripts
-Action	Script
-🟢 Create Key	1create_key.py
-🔵 Get Wallet	2get_wallet.py
-🟣 Sign Hash	3test_sign_hash.py
-🟠 Broadcast Tx	4broadcast_tx.py
-
-This structure keeps the system clean and fully modular.
-
-🧰 Installation & Setup (Local)
+🧰 Local Setup Guide
 1️⃣ Backend Setup
 cd backend
 python -m venv .venv
+.\.venv\Scripts\activate     # On Windows
+pip install fastapi uvicorn pyserial
 
-
-Activate environment:
-
-Windows
-
-.\.venv\Scripts\activate
-
-
-Install dependencies:
-
-pip install fastapi uvicorn pyserial web3 eth-account python-dotenv
-
-
-Run the backend:
-
+Run the backend
 uvicorn app:app --host 127.0.0.1 --port 8000
-
-
-Backend WebSocket URL:
-
-ws://127.0.0.1:8000/ws/run
 
 2️⃣ Frontend Setup
 cd frontend
@@ -124,46 +71,25 @@ npm install
 npm run dev
 
 
-Open browser:
+Open the local development URL (usually:
+👉 http://localhost:5173
+)
 
-http://localhost:5173
+💡 Usage
 
-3️⃣ Usage Flow
-
-Connect Arduino through USB
-
-Start backend (FastAPI)
-
-Start frontend (Vite)
-
-Click any button:
-
+Connect Arduino via USB
+Start backend server
+Start frontend UI
+Click any of the four buttons:
 Create Key
-
 Get Wallet
-
 Sign Hash
-
 Broadcast Tx
 
-Watch real-time terminal output on the web UI
+Watch the live terminal output stream to the screen
+🙏 Credits
 
-🔒 Security Notes
-
-Private keys never leave Arduino unless you explicitly print them
-
-Avoid running unstable serial monitors while using backend
-
-Always test on testnets first
-
-Use air-gapped PC for maximum security if using with real funds
-
-Do not commit your .env or private data to GitHub
-
-🤝 Credits
-
-If you use or modify this project, please credit the team:
-
+If you use or modify this project, kindly credit the creators:
 @teamcoldvault
 
-Created by: Heykaranraj
+
