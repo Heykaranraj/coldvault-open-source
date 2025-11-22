@@ -88,6 +88,18 @@ export default function Community({ onBack }) {
           }]);
           break;
           
+        case "warning":
+          // Warning message for filtered content
+          setMessages(prev => [...prev, {
+            id: messageIdRef.current++,
+            user: "System",
+            text: data.text,
+            timestamp: new Date().toLocaleTimeString(),
+            isSystem: true,
+            isWarning: true
+          }]);
+          break;
+          
         case "user_list":
           // Update online users
           setOnlineUsers(data.users);
@@ -299,7 +311,7 @@ export default function Community({ onBack }) {
                   key={msg.id}
                   className={`message ${msg.isSystem ? "system-message" : ""} ${
                     msg.isOwn ? "own-message" : ""
-                  }`}
+                  } ${msg.isWarning ? "warning-message" : ""}`}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}

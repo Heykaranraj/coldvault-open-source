@@ -130,28 +130,20 @@ export default function Educational({ onBack }) {
 
   const tutorials = [
     {
-      title: "Setting Up ColdVault",
-      duration: "10 min",
-      description: "Complete setup guide from Arduino to web interface",
+      title: "Setting Up ColdVault - Installation Guide",
+      description: "Complete installation guide: Arduino setup, Python dependencies, and web interface configuration",
       thumbnail: "🎯",
+      category: "setup",
+      videoUrl: "", // Add YouTube link here
+      topics: ["Arduino Installation", "Python Backend Setup", "Frontend Configuration", "Serial Port Setup"]
     },
     {
-      title: "Creating Your First Wallet",
-      duration: "5 min",
-      description: "Step-by-step wallet creation process",
-      thumbnail: "🔑",
-    },
-    {
-      title: "Signing Transactions Safely",
-      duration: "8 min",
-      description: "Best practices for transaction signing",
-      thumbnail: "✍️",
-    },
-    {
-      title: "Advanced Security Features",
-      duration: "12 min",
-      description: "Implementing multi-sig and advanced security",
-      thumbnail: "🛡️",
+      title: "How ColdVault Works - Complete Overview",
+      description: "Understanding the architecture, security model, transaction flow, and offline signing process",
+      thumbnail: "⚙️",
+      category: "working",
+      videoUrl: "", // Add YouTube link here
+      topics: ["System Architecture", "Security Model", "Transaction Flow", "Offline Signing"]
     },
   ];
 
@@ -316,33 +308,74 @@ export default function Educational({ onBack }) {
             transition={{ duration: 0.5 }}
           >
             <h2 className="content-title">Video Tutorials</h2>
-            <div className="tutorials-grid">
-              {tutorials.map((tutorial, i) => (
-                <motion.div
-                  key={i}
-                  className="tutorial-card"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.4 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                >
-                  <div className="tutorial-thumbnail">{tutorial.thumbnail}</div>
-                  <div className="tutorial-info">
-                    <h3 className="tutorial-title">{tutorial.title}</h3>
-                    <p className="tutorial-description">{tutorial.description}</p>
-                    <div className="tutorial-meta">
-                      <span className="tutorial-duration">
-                        ⏱️ {tutorial.duration}
-                      </span>
-                      <button className="watch-button">Watch →</button>
+            
+            <div className="featured-section">
+              <h3 className="featured-title">
+                <span className="featured-icon">⭐</span>
+                Getting Started - Essential Tutorials
+              </h3>
+              <div className="tutorials-grid featured">
+                {tutorials.map((tutorial, i) => (
+                  <motion.div
+                    key={i}
+                    className="tutorial-card featured-card"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1, duration: 0.4 }}
+                    whileHover={{ scale: 1.03, y: -5 }}
+                    onClick={() => tutorial.videoUrl && window.open(tutorial.videoUrl, "_blank")}
+                    style={{ cursor: tutorial.videoUrl ? "pointer" : "default" }}
+                  >
+                    <div className="tutorial-thumbnail featured-thumbnail">
+                      {tutorial.thumbnail}
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                    <div className="tutorial-info">
+                      <div className="tutorial-badge">
+                        {tutorial.category === "setup" ? "🔧 Setup" : "📚 Overview"}
+                      </div>
+                      <h3 className="tutorial-title">{tutorial.title}</h3>
+                      <p className="tutorial-description">{tutorial.description}</p>
+                      <div className="tutorial-topics">
+                        {tutorial.topics.map((topic, idx) => (
+                          <span key={idx} className="topic-tag">{topic}</span>
+                        ))}
+                      </div>
+                      <div className="tutorial-meta">
+                        <button 
+                          className="watch-button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (tutorial.videoUrl) {
+                              window.open(tutorial.videoUrl, "_blank");
+                            }
+                          }}
+                          disabled={!tutorial.videoUrl}
+                        >
+                          {tutorial.videoUrl ? "Watch on YouTube →" : "Coming Soon"}
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
-            <p className="coming-soon-note">
-              📹 Video tutorials are coming soon! Follow us on GitHub for updates.
-            </p>
+            
+            <div className="tutorials-note">
+              <div className="note-icon">📹</div>
+              <div className="note-content">
+                <h4 className="note-title">Video Tutorials Coming Soon!</h4>
+                <p className="note-text">
+                  We're currently recording comprehensive video tutorials for all topics. 
+                  Follow us on GitHub to get notified when they're available.
+                </p>
+                <button 
+                  className="github-follow-button"
+                  onClick={() => window.open("https://github.com/Heykaranraj/ColdVault-Open-Source-Wallet", "_blank")}
+                >
+                  ⭐ Star on GitHub
+                </button>
+              </div>
+            </div>
           </motion.div>
         )}
 

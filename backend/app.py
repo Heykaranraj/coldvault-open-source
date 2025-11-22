@@ -29,9 +29,9 @@ SCRIPT_MAP = {
     "sign_hash": "3test_sign_hash.py",
     "broadcast_tx": "4broadcast_tx.py",
     "create_key_btc": "1create_keybtc.py",
-    "get_wallet_btc": "2get_walletbtc.py",
-    "sign_hash_btc": "3test_sign_hashbtc.py",
-    "broadcast_tx_btc": "4broadcast_txbtc.py",
+    "get_wallet_btc": "2get_walletbtc2.py",
+    "sign_hash_btc": "3test_sign_hashbtc3.py",
+    "broadcast_tx_btc": "4broadcast_txbtc4.py",
 }
 
 

@@ -296,6 +296,17 @@
   font-style: italic;
 }
 
+.message.warning-message {
+  align-self: center;
+  max-width: 80%;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  text-align: center;
+  color: #fbbf24;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
 .message-header {
   display: flex;
   justify-content: space-between;

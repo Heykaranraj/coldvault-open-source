@@ -1,17 +1,19 @@
 {
   "transaction": {
-    "from": "0xcbE091d87b52A8BCA4175c5B18b971DEF48F4B7D",
-    "to": "0x3bE2E9Bf03E8260e332768B0887C400450536eEf",
-    "value": 100000,
-    "gas": 21000,
-    "gasPrice": 20000000000,
-    "nonce": 0,
-    "chainId": 11155111
+    "from_address": "mtygHSSsKoFeq5Bs9W7ZMV1z4E5iaArhWx",
+    "to_address": "tb1qj0w0f0zt3vud4lv5z0s0z9v4eftt8v9rxkdz0w",
+    "amount_sats": 50000,
+    "fee_sats": 500,
+    "network": "bitcoin-testnet",
+    "memo": "Unsigned test transaction",
+    "timestamp": 1763816197
   },
-  "signature": "CA050200020020838F28F64121B8208BA14932B4368657EED0333C8B84C729E6183744803A1AF71ECC443863E3EBB154B830032D52DD6D3ED70EC876F58FF6B5",
-  "private_key": "D15315B0900161DFDFED27A71A6B1F5423DA5CF934496B2BEBDB66AA470D0023",
-  "address": "0xcbE091d87b52A8BCA4175c5B18b971DEF48F4B7D",
-  "transaction_hash": "8516936b9f3672580a22af26f630ef20de8fd8386299b42ce96f8a00101ec859",
-  "timestamp": 1763607750.0370586,
-  "signed_by": "arduino"
+  "tx_hash": "5d67baa7828227f8401debf4c4565a5786ee3cb1a82bae7053240915ec8773b7",
+  "signature": null,
+  "raw_transaction_hex": null,
+  "private_key_wif": "cPMcZRXdDG2jzTYfC19CmLBLC96a1AhM2ZDHWPH1EdYrURtgfkGm",
+  "private_key_hex": "34f124a650ce2d260c93295b3739d4749243c8931adb116bfabc785aa8172de3",
+  "address": "mtygHSSsKoFeq5Bs9W7ZMV1z4E5iaArhWx",
+  "network": "bitcoin-testnet",
+  "timestamp": 1763816197
 }

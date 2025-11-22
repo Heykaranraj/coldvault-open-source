@@ -23,22 +23,13 @@ export default function Home({ onNavigate }) {
       available: true,
     },
     {
-      id: "litecoin",
-      title: "Litecoin Based",
-      subtitle: "Coming Soon",
-      description: "Litecoin cold wallet integration - Under Development",
-      icon: "Ł",
-      gradient: "linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%)",
-      available: false,
-    },
-    {
       id: "github",
       title: "GitHub Repository",
       subtitle: "View Source Code",
       description: "Explore the open-source code and contribute",
       icon: "🐙",
       gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-      link: "https://github.com/Heykaranraj/ColdVault-Open-Source-Wallet",
+      link: "https://github.com/Heykaranraj/coldvault-open-source-wallet",
     },
     {
       id: "sandbox",

@@ -282,11 +282,35 @@
 }
 
 /* Tutorials Section */
+.featured-section {
+  margin-bottom: 50px;
+}
+
+.featured-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 30px 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.featured-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 20px rgba(250, 112, 154, 0.6));
+}
+
 .tutorials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
   margin-bottom: 30px;
+}
+
+.tutorials-grid.featured {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
 }
 
 .tutorial-card {
@@ -298,9 +322,19 @@
   transition: all 0.3s ease;
 }
 
+.tutorial-card.featured-card {
+  border: 2px solid rgba(250, 112, 154, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .tutorial-card:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(250, 112, 154, 0.5);
+}
+
+.tutorial-card.featured-card:hover {
+  border-color: rgba(250, 112, 154, 0.7);
+  box-shadow: 0 10px 40px rgba(250, 112, 154, 0.3);
 }
 
 .tutorial-thumbnail {
@@ -312,8 +346,26 @@
   background: linear-gradient(135deg, rgba(250, 112, 154, 0.2), rgba(254, 225, 64, 0.2));
 }
 
+.tutorial-thumbnail.featured-thumbnail {
+  height: 200px;
+  font-size: 6rem;
+  background: linear-gradient(135deg, rgba(250, 112, 154, 0.3), rgba(254, 225, 64, 0.3));
+}
+
 .tutorial-info {
   padding: 24px;
+}
+
+.tutorial-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, rgba(250, 112, 154, 0.3), rgba(254, 225, 64, 0.3));
+  border: 1px solid rgba(250, 112, 154, 0.5);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 12px;
 }
 
 .tutorial-title {
@@ -330,30 +382,124 @@
   line-height: 1.5;
 }
 
-.tutorial-meta {
+.tutorial-topics {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
-.tutorial-duration {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
+.topic-tag {
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tutorial-meta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .watch-button {
   background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
   color: white;
   border: none;
-  padding: 8px 20px;
+  padding: 10px 24px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  width: 100%;
 }
 
-.watch-button:hover {
+.watch-button:disabled {
+  background: linear-gradient(135deg, rgba(250, 112, 154, 0.3), rgba(254, 225, 64, 0.3));
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.watch-button:not(:disabled):hover {
   transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(250, 112, 154, 0.4);
+}
+
+.other-tutorials-section {
+  margin-top: 50px;
+}
+
+.section-subtitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 30px 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-icon {
+  font-size: 2rem;
+}
+
+.tutorials-note {
+  margin-top: 50px;
+  padding: 40px;
+  background: rgba(250, 112, 154, 0.1);
+  border: 2px solid rgba(250, 112, 154, 0.3);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.note-icon {
+  font-size: 4rem;
+  flex-shrink: 0;
+}
+
+.note-content {
+  flex: 1;
+}
+
+.note-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: white;
+}
+
+.note-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+}
+
+.github-follow-button {
+  background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.github-follow-button:hover {
+  background: linear-gradient(135deg, #444 0%, #2a2a2a 100%);
+  border-color: rgba(250, 112, 154, 0.5);
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(250, 112, 154, 0.3);
 }
 
 .coming-soon-note {
